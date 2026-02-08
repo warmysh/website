@@ -1,8 +1,10 @@
-﻿---
+---
 import fs from "node:fs";
+import NavTree from "../components/NavTree.astro";
+import TocTree from "../components/TocTree.astro";
 import "../styles/global.css";
 
-const { title = "Zhuzhimima" } = Astro.props;
+const { title = "Zhuzhimima", tocHeadings = [] } = Astro.props;
 const navFile = new URL("../../content/_nav.md", import.meta.url);
 const navSource = fs.readFileSync(navFile, "utf-8");
 const year = new Date().getFullYear();
@@ -21,19 +23,102 @@ function markdownHrefToRoute(markdownHref) {
   return normalizePath(`${baseUrl}${routePart}`);
 }
 
-const navItems = navSource
-  .split(/\r?\n/)
-  .map((line) => {
-    const match = line.match(/^- \[(.+)\]\((.+)\)$/);
-    if (!match) return null;
-    return {
-      label: match[1],
-      href: markdownHrefToRoute(match[2])
-    };
-  })
-  .filter(Boolean);
+function parseNavTree(markdown) {
+  const roots = [];
+  const stack = [];
 
+  markdown.split(/\r?\n/).forEach((line) => {
+    const match = line.match(/^(\s*)-\s+\[([^\]]+)\]\(([^)]+)\)\s*$/);
+    if (!match) return;
+
+    const leading = match[1].replace(/\t/g, "  ");
+    const depth = Math.floor(leading.length / 2);
+    const node = {
+      label: match[2].trim(),
+      href: markdownHrefToRoute(match[3]),
+      children: []
+    };
+
+    while (stack.length > 0 && stack[stack.length - 1].depth >= depth) {
+      stack.pop();
+    }
+
+    if (stack.length === 0) {
+      roots.push(node);
+    } else {
+      stack[stack.length - 1].node.children.push(node);
+    }
+
+    stack.push({ depth, node });
+  });
+
+  return roots;
+}
+
+function markNavState(items, currentPathname) {
+  return items.map((item) => {
+    const children = markNavState(item.children, currentPathname);
+    const isSelfActive = item.href === currentPathname;
+    const isBranchActive = isSelfActive || children.some((child) => child.isBranchActive);
+
+    return {
+      ...item,
+      children,
+      isSelfActive,
+      isBranchActive
+    };
+  });
+}
+
+function collectNavRoutes(items, result = new Set()) {
+  items.forEach((item) => {
+    result.add(item.href);
+    collectNavRoutes(item.children, result);
+  });
+  return result;
+}
+
+function buildTocTree(headings) {
+  const roots = [];
+  let currentH2 = null;
+
+  headings.forEach((heading) => {
+    if (!heading || !heading.slug || !heading.text) return;
+
+    const normalizedText = heading.text.replace(/\s*#\s*$/, "").trim();
+    if (!normalizedText) return;
+
+    if (heading.depth === 2) {
+      currentH2 = {
+        slug: heading.slug,
+        text: normalizedText,
+        children: []
+      };
+      roots.push(currentH2);
+      return;
+    }
+
+    if (heading.depth === 3) {
+      const child = { slug: heading.slug, text: normalizedText };
+      if (currentH2) {
+        currentH2.children.push(child);
+      } else {
+        roots.push({ ...child, children: [] });
+      }
+    }
+  });
+
+  return roots;
+}
+
+const parsedNav = parseNavTree(navSource);
 const currentPath = normalizePath(Astro.url.pathname);
+const knownRoutes = collectNavRoutes(parsedNav);
+const notFoundRoute = normalizePath(`${baseUrl}404/`);
+const isKnownRoute = knownRoutes.has(currentPath) || currentPath === notFoundRoute;
+const navItems = markNavState(parsedNav, currentPath);
+const tocItems = buildTocTree(tocHeadings);
+const hasToc = tocItems.length > 0;
 const pageTitle = title === "Zhuzhimima" ? title : `${title} | Zhuzhimima`;
 ---
 <!doctype html>
@@ -51,25 +136,49 @@ const pageTitle = title === "Zhuzhimima" ? title : `${title} | Zhuzhimima`;
     </header>
 
     <div class="shell shell--layout">
-      <aside class="site-aside">
-        <nav class="site-nav" aria-label="Site navigation">
-          <ul>
-            {navItems.map((item) => (
-              <li>
-                <a href={item.href} class={item.href === currentPath ? "active" : undefined}>
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+      <aside class="site-aside" aria-label="Навигация">
+        <details class="site-nav-mobile">
+          <summary>Разделы</summary>
+          <nav class="site-nav" aria-label="Site navigation">
+            <NavTree items={navItems} />
+          </nav>
+        </details>
+
+        <nav class="site-nav site-nav-desktop" aria-label="Site navigation">
+          <NavTree items={navItems} />
         </nav>
       </aside>
 
       <main class="site-main">
-        <article class="markdown-body">
-          <slot />
-        </article>
+        {hasToc ? (
+          <details class="site-toc-mobile">
+            <summary>Оглавление</summary>
+            <nav class="site-toc-nav" aria-label="Page sections">
+              <TocTree items={tocItems} />
+            </nav>
+          </details>
+        ) : null}
+
+        {isKnownRoute ? (
+          <article class="markdown-body">
+            <slot />
+          </article>
+        ) : (
+          <article class="markdown-body markdown-body--not-found">
+            <h1>Not found</h1>
+            <p>Запрошенный маршрут отсутствует в подтверждённой навигации.</p>
+          </article>
+        )}
       </main>
+
+      <aside class="site-toc" aria-label="Оглавление">
+        {hasToc ? (
+          <nav class="site-toc-nav" aria-label="Page sections">
+            <h2>На странице</h2>
+            <TocTree items={tocItems} />
+          </nav>
+        ) : null}
+      </aside>
     </div>
 
     <footer class="site-footer">

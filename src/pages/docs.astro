@@ -1,7 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Content from "../../content/docs.md";
+import Content, { getHeadings } from "../../content/docs.md";
+
+const tocHeadings = getHeadings().filter((heading) => heading.depth === 2 || heading.depth === 3);
 ---
-<BaseLayout title="Документация">
+<BaseLayout title="Документация" tocHeadings={tocHeadings}>
   <Content />
 </BaseLayout>

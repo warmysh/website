@@ -1,0 +1,13 @@
+---
+const { items = [] } = Astro.props;
+---
+<ul class="nav-list">
+  {items.map((item) => (
+    <li class={item.isBranchActive ? "is-branch-active" : undefined}>
+      <a href={item.href} class={item.isSelfActive ? "active" : undefined} aria-current={item.isSelfActive ? "page" : undefined}>
+        {item.label}
+      </a>
+      {item.children.length > 0 ? <Astro.self items={item.children} /> : null}
+    </li>
+  ))}
+</ul>

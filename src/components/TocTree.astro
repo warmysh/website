@@ -1,0 +1,11 @@
+---
+const { items = [] } = Astro.props;
+---
+<ul class="toc-list">
+  {items.map((item) => (
+    <li>
+      <a href={`#${item.slug}`}>{item.text}</a>
+      {item.children.length > 0 ? <Astro.self items={item.children} /> : null}
+    </li>
+  ))}
+</ul>
