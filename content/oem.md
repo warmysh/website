@@ -57,7 +57,8 @@
 ## Связь
 Инженерские вопросы и OEM-интеграция:
 
-- GitHub Issues репозитория Zhuzhimima — предпочтительный канал [texGitHub Issues репозитория Zhuzhimima — предпочтительный каналt](https://github.com/warmysh/website/issues)
+- GitHub Issues репозитория Zhuzhimima — предпочтительный канал: <https://github.com/warmysh/website/issues>
+- Email: [md@zhuzhimima.ru](mailto:md@zhuzhimima.ru)
 
 Коммерческие условия, объёмы и сроки поставки обсуждаются отдельно и не описываются на данном сайте.
 
