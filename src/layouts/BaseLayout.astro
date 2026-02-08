@@ -6,11 +6,19 @@ const { title = "Zhuzhimima" } = Astro.props;
 const navFile = new URL("../../content/_nav.md", import.meta.url);
 const navSource = fs.readFileSync(navFile, "utf-8");
 const year = new Date().getFullYear();
+const baseUrl = import.meta.env.BASE_URL;
+
+function normalizePath(path) {
+  if (!path) return "/";
+  const prefixed = path.startsWith("/") ? path : `/${path}`;
+  return prefixed.replace(/\/+$/, "/");
+}
 
 function markdownHrefToRoute(markdownHref) {
   const normalized = markdownHref.trim().replace(/^\.\/+/, "");
   const pageName = normalized.replace(/\.md$/i, "");
-  return pageName === "index" ? "/" : `/${pageName}`;
+  const routePart = pageName === "index" ? "" : `${pageName}/`;
+  return normalizePath(`${baseUrl}${routePart}`);
 }
 
 const navItems = navSource
@@ -25,7 +33,7 @@ const navItems = navSource
   })
   .filter(Boolean);
 
-const currentPath = Astro.url.pathname === "/" ? "/" : Astro.url.pathname.replace(/\/+$/, "");
+const currentPath = normalizePath(Astro.url.pathname);
 const pageTitle = title === "Zhuzhimima" ? title : `${title} | Zhuzhimima`;
 ---
 <!doctype html>
@@ -38,7 +46,7 @@ const pageTitle = title === "Zhuzhimima" ? title : `${title} | Zhuzhimima`;
   <body>
     <header class="site-header">
       <div class="shell shell--header">
-        <a class="brand" href="/">Zhuzhimima</a>
+        <a class="brand" href={normalizePath(baseUrl)}>Zhuzhimima</a>
       </div>
     </header>
 
