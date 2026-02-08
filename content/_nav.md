@@ -1,8 +1,8 @@
 ﻿# Навигация
 
 - [Главная](./index.md)
-- [Платформа и архитектура](./platform.md)
 - [Безопасность](./safety.md)
+- [Платформа и архитектура](./platform.md)
 - [Конфигурации](./configurations.md)
 - [Документация](./docs.md)
 - [Roadmap](./roadmap.md)
