@@ -6,4 +6,4 @@
 - [OEM](./oem.md)
 - [Конфигурации](./configurations.md)
 - [Документация](./docs.md)
-- [Roadmap](./roadmap.md)
+- [Roadmap (направления)](./roadmap.md)
