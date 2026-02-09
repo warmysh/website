@@ -1,7 +1,37 @@
----
+﻿---
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 <BaseLayout title="Not found">
+  <script is:inline>
+    (function () {
+      var p = window.location.pathname || "/";
+      var q = window.location.search || "";
+      var h = window.location.hash || "";
+      var knownRoots = ["/docs", "/oem", "/safety", "/platform", "/configurations", "/roadmap"];
+
+      if (p === "/" || p === "/website") {
+        window.location.replace("/website/" + q + h);
+        return;
+      }
+
+      if (!p.startsWith("/website/")) {
+        var isKnownRootPath = knownRoots.some(function (root) {
+          return p === root || p.startsWith(root + "/");
+        });
+
+        if (isKnownRootPath) {
+          window.location.replace("/website" + p + q + h);
+          return;
+        }
+
+        window.location.replace("/website/" + q + h);
+      }
+    })();
+  </script>
   <h1>Not found</h1>
-  <p>Запрошенная страница недоступна.</p>
+  <p>The requested page is unavailable.</p>
+  <p>
+    If redirect does not start automatically, open
+    <a href="/website/">/website/</a>.
+  </p>
 </BaseLayout>
