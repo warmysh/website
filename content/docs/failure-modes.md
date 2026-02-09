@@ -6,18 +6,18 @@
 
 ## Матрица
 
-| Failure mode | Detection | Automatic reaction | Recovery action |
+| Режим отказа | Обнаружение | Автоматическая реакция | Действие восстановления |
 | --- | --- | --- | --- |
-| Absolute/relative overtemperature | Temperature threshold logic | Immediate STOP, heating OFF, ABORT latch | Check process and sensor path, explicit operator reset |
-| Thermocouple fault (MAX31856 fault bits) | Sensor fault flags | Immediate STOP, heating OFF, ABORT latch | Repair sensor wiring/sensor, rerun SELFTEST |
-| SSR stuck ON / current when command is OFF | Current diagnostics | Power path shutdown via safety contour, ABORT latch | Inspect SSR/power stage, replace faulty part, rerun SELFTEST |
-| Heater open circuit / low current at high duty | Current below expected range | STOP with fault state, heating blocked | Check heater and wiring continuity, rerun SELFTEST |
-| Sensor freeze / no expected thermal response | Delta-temperature watchdog logic | STOP with fault state, heating blocked | Fix sensor placement/connection, validate response |
-| Logic inconsistency (e.g. temperature growth with OFF command) | Safety plausibility checks | Immediate STOP, ABORT latch | Diagnose power stage/control path, explicit operator reset |
-| Power interruption during run | Boot-time resume logic + SELFTEST gate | Safe reboot; resume allowed only under strict conditions | Confirm resume preconditions or start from safe IDLE |
-| Watchdog reset | Hardware watchdog timeout | Automatic reset to safe state (heating OFF) | Diagnose stall reason, verify stability before restart |
-| SELFTEST failed | Pre-start checks | Heating remains blocked | Remove root cause and pass SELFTEST |
-| Slow/overloaded network client | Service time budget monitor | Client disconnect, control loop priority preserved | Fix network side; heating contour keeps deterministic behavior |
+| Абсолютный/относительный перегрев | Логика температурных порогов | Немедленный STOP, нагрев OFF, защёлка ABORT | Проверка процесса и тракта датчика, явный сброс оператором |
+| Отказ термопары (флаги MAX31856) | Флаги отказа датчика | Немедленный STOP, нагрев OFF, защёлка ABORT | Отремонтировать проводку/датчик, повторить SELFTEST |
+| Залипание SSR / ток при команде OFF | Диагностика тока | Отключение силового тракта через контур безопасности, защёлка ABORT | Проверка SSR/силового тракта, замена неисправного узла, повторный SELFTEST |
+| Обрыв нагревателя / низкий ток при высоком коэффициенте заполнения | Ток ниже ожидаемого диапазона | STOP в аварийном состоянии, нагрев заблокирован | Проверка целостности нагревателя и проводки, повторный SELFTEST |
+| Зависание датчика / нет ожидаемого теплового отклика | Логика контроля дельты температуры | STOP в аварийном состоянии, нагрев заблокирован | Проверка установки и подключения датчика, подтверждение отклика |
+| Логическая несогласованность (например, рост температуры при команде OFF) | Проверки правдоподобия в контуре безопасности | Немедленный STOP, защёлка ABORT | Диагностика силового тракта и канала управления, явный сброс оператором |
+| Прерывание питания во время цикла | Логика возобновления после перезапуска + барьер SELFTEST | Безопасная перезагрузка; возобновление только при строгих условиях | Подтверждение условий возобновления или запуск из безопасного IDLE |
+| Срабатывание сторожевого таймера (watchdog) | Таймаут сторожевого таймера | Автоматический сброс в безопасное состояние (нагрев OFF) | Диагностика причины зависания, подтверждение стабильности перед запуском |
+| Сбой SELFTEST | Предпусковые проверки | Нагрев остаётся заблокирован | Устранение причины и повторный успешный SELFTEST |
+| Медленный/перегруженный сетевой клиент | Контроль временного бюджета сервисного контура | Отключение клиента, приоритет контура управления сохранён | Нормализация сетевого контура; контур нагрева работает детерминированно |
 
 ## Общая политика восстановления
 
