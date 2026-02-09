@@ -1,5 +1,4 @@
-КОНТЕНТ-АУДИТ: Zhuzhimima Kiln Controller (ESP-only)
-Дата: 2026-02-05
+КОНТЕНТ-АУДИТ: Zhuzhimima Kiln Controller Дата: 2026-02-05
 
 Версия проекта: v1.5.3 (OTA v1 Frozen + Logs v1 Implemented)
 
