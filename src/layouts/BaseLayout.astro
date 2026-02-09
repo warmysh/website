@@ -4,7 +4,7 @@ import NavTree from "../components/NavTree.astro";
 import TocTree from "../components/TocTree.astro";
 import "../styles/global.css";
 
-const { title = "Zhuzhimima", tocHeadings = [] } = Astro.props;
+const { title = "ZHUZHIMIMA", tocHeadings = [] } = Astro.props;
 const navFile = new URL("../../content/_nav.md", import.meta.url);
 const navSource = fs.readFileSync(navFile, "utf-8");
 const year = new Date().getFullYear();
@@ -126,7 +126,7 @@ const isKnownRoute = knownRoutes.has(currentPath) || currentPath === notFoundRou
 const navItems = markNavState(parsedNav, currentPath);
 const tocItems = buildTocTree(tocHeadings);
 const hasToc = tocItems.length > 0;
-const pageTitle = title === "Zhuzhimima" ? title : `${title} | Zhuzhimima`;
+const pageTitle = title === "ZHUZHIMIMA" ? title : `${title} — ZHUZHIMIMA`;
 ---
 <!doctype html>
 <html lang="ru">
@@ -138,7 +138,7 @@ const pageTitle = title === "Zhuzhimima" ? title : `${title} | Zhuzhimima`;
   <body>
     <header class="site-header">
       <div class="shell shell--header">
-        <a class="brand" href={normalizePath(baseUrl)}>Zhuzhimima</a>
+        <a class="brand" href={normalizePath(baseUrl)}>ZHUZHIMIMA</a>
       </div>
     </header>
 
