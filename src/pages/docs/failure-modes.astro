@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Content, { getHeadings } from "../../../content/docs/failure-modes.md";
+
+const tocHeadings = getHeadings().filter((heading) => heading.depth === 2 || heading.depth === 3);
+---
+<BaseLayout title="Failure modes (public)" tocHeadings={tocHeadings}>
+  <Content />
+</BaseLayout>

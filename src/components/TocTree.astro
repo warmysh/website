@@ -2,10 +2,13 @@
 const { items = [] } = Astro.props;
 ---
 <ul class="toc-list">
-  {items.map((item) => (
-    <li>
-      <a href={`#${item.slug}`}>{item.text}</a>
-      {item.children.length > 0 ? <Astro.self items={item.children} /> : null}
-    </li>
-  ))}
+  {items.map((item) => {
+    const children = Array.isArray(item.children) ? item.children : [];
+    return (
+      <li>
+        <a href={`#${item.slug}`}>{item.text}</a>
+        {children.length > 0 ? <Astro.self items={children} /> : null}
+      </li>
+    );
+  })}
 </ul>

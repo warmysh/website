@@ -6,6 +6,15 @@
 - [Архитектура системы](/docs/system-architecture/) — как разделены слои и почему интерфейс/сеть не обходят безопасность.
 - [OEM-интеграция](/docs/oem-integration/) — какие инварианты и ограничения действуют при интеграции.
 
+## Публичный OEM integration pack (без секретов)
+
+- [Technical specification](/docs/technical-specification/) — контрактный уровень: интерфейсы, диапазоны и условия интеграции.
+- [SELFTEST scope](/docs/selftest-scope/) — какие проверки входят в pre-start gate и что считается pass/fail.
+- [Failure modes](/docs/failure-modes/) — матрица типовых отказов и стандартные recovery-действия.
+- [Integration checklist](/docs/integration-checklist/) — чек-лист OEM-внедрения и приемочных проверок.
+
+Связанный раздел для OEM: [страница OEM](/oem/).
+
 ---
 # Перечень доказательной базы
 

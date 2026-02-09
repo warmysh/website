@@ -54,6 +54,17 @@
 - корректность применения защит зависит от конфигурации и монтажа;
 - оператор процесса остаётся ответственным за контроль процесса.
 
+## Публичный пакет интеграционных документов (без секретов)
+
+Для OEM-команды опубликован отдельный комплект документов:
+
+- [Technical specification](/docs/technical-specification/)
+- [SELFTEST scope](/docs/selftest-scope/)
+- [Failure modes](/docs/failure-modes/)
+- [Integration checklist](/docs/integration-checklist/)
+
+Весь пакет доступен также через [раздел документации](/docs/).
+
 ## Связь
 Инженерские вопросы и OEM-интеграция:
 
