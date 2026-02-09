@@ -8,7 +8,7 @@
 
 - [ ] Подтверждён scope: текущая интеграция только для однозонной версии.
 - [ ] Зафиксированы зоны ответственности OEM за финальное изделие и нормативное соответствие.
-- [ ] Команда интеграции ознакомлена с [Technical specification](/docs/technical-specification/).
+- [ ] Команда интеграции ознакомлена с [Technical specification](/website/docs/technical-specification/).
 
 ## 2. Electrical and safety chain
 
@@ -30,7 +30,7 @@
 - [ ] При fail-сценариях SELFTEST нагрев остаётся заблокирован.
 - [ ] Процедура устранения после SELFTEST FAIL согласована с эксплуатацией.
 
-Подробности: [SELFTEST scope](/docs/selftest-scope/).
+Подробности: [SELFTEST scope](/website/docs/selftest-scope/).
 
 ## 5. Failure-mode validation
 
@@ -39,7 +39,7 @@
 - [ ] Проверено поведение после ABORT (аварийная блокировка, без автопуска, требуется сброс блокировки оператором).
 - [ ] Проверено безопасное поведение после watchdog/power-loss.
 
-Подробности: [Failure modes](/docs/failure-modes/).
+Подробности: [Failure modes](/website/docs/failure-modes/).
 
 ## 6. Network and observability
 
@@ -55,5 +55,5 @@
 
 ## Related docs
 
-- [OEM page](/oem/)
-- [Documentation index](/docs/)
+- [OEM page](/website/oem/)
+- [Documentation index](/website/docs/)

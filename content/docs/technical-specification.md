@@ -56,7 +56,7 @@
 
 ## Related docs
 
-- [SELFTEST scope](/docs/selftest-scope/)
-- [Failure modes](/docs/failure-modes/)
-- [Integration checklist](/docs/integration-checklist/)
-- [OEM page](/oem/)
+- [SELFTEST scope](/website/docs/selftest-scope/)
+- [Failure modes](/website/docs/failure-modes/)
+- [Integration checklist](/website/docs/integration-checklist/)
+- [OEM page](/website/oem/)

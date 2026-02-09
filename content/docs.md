@@ -2,18 +2,18 @@
 
 ## Канонический набор документов
 
-- [Концепция безопасности](/docs/safety-concept/) — что именно блокирует нагрев и как система уходит в безопасное состояние.
-- [Архитектура системы](/docs/system-architecture/) — как разделены слои и почему интерфейс/сеть не обходят безопасность.
-- [OEM-интеграция](/docs/oem-integration/) — какие инварианты и ограничения действуют при интеграции.
+- [Концепция безопасности](/website/docs/safety-concept/) — что именно блокирует нагрев и как система уходит в безопасное состояние.
+- [Архитектура системы](/website/docs/system-architecture/) — как разделены слои и почему интерфейс/сеть не обходят безопасность.
+- [OEM-интеграция](/website/docs/oem-integration/) — какие инварианты и ограничения действуют при интеграции.
 
 ## Публичный OEM integration pack (без секретов)
 
-- [Technical specification](/docs/technical-specification/) — контрактный уровень: интерфейсы, диапазоны и условия интеграции.
-- [SELFTEST scope](/docs/selftest-scope/) — какие проверки входят в pre-start gate и что считается pass/fail.
-- [Failure modes](/docs/failure-modes/) — матрица типовых отказов и стандартные действия при отказах.
-- [Integration checklist](/docs/integration-checklist/) — чек-лист OEM-внедрения и приемочных проверок.
+- [Technical specification](/website/docs/technical-specification/) — контрактный уровень: интерфейсы, диапазоны и условия интеграции.
+- [SELFTEST scope](/website/docs/selftest-scope/) — какие проверки входят в pre-start gate и что считается pass/fail.
+- [Failure modes](/website/docs/failure-modes/) — матрица типовых отказов и стандартные действия при отказах.
+- [Integration checklist](/website/docs/integration-checklist/) — чек-лист OEM-внедрения и приемочных проверок.
 
-Связанный раздел для OEM: [страница OEM](/oem/).
+Связанный раздел для OEM: [страница OEM](/website/oem/).
 
 ---
 # Перечень доказательной базы
@@ -78,5 +78,5 @@
 Если материал не опубликован в доступной документации и не подтверждён реализацией,
 на сайте он не считается реализованным.
 
-Планы развития отражаются только в [Roadmap](/roadmap/) и без сроков.
+Планы развития отражаются только в [Roadmap](/website/roadmap/) и без сроков.
 
