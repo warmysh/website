@@ -1,5 +1,8 @@
 import { defineConfig } from "astro/config";
 
+const SITE_URL = "https://warmysh.github.io";
+const BASE_PATH = "/website";
+
 function hasHeadingAnchor(node) {
   if (!Array.isArray(node.children)) return false;
   return node.children.some((child) => {
@@ -73,9 +76,54 @@ function addHeadingAnchors() {
   };
 }
 
+function normalizeBasePath(basePath) {
+  if (typeof basePath !== "string" || basePath.trim().length === 0) return "/";
+  if (basePath === "/") return "/";
+
+  const withLeadingSlash = basePath.startsWith("/") ? basePath : `/${basePath}`;
+  return withLeadingSlash.replace(/\/+$/, "");
+}
+
+function applyBasePathToRootRelativeUrl(url, basePath) {
+  if (typeof url !== "string") return url;
+  if (!url.startsWith("/") || url.startsWith("//")) return url;
+  if (basePath === "/") return url;
+
+  if (url === basePath || url.startsWith(`${basePath}/`)) return url;
+  if (url === "/") return `${basePath}/`;
+  return `${basePath}${url}`;
+}
+
+function prefixRootRelativeLinks(basePath) {
+  return () => (tree) => {
+    const visit = (node) => {
+      if (!node || typeof node !== "object") return;
+
+      if (node.type === "element" && node.properties && typeof node.properties === "object") {
+        ["href", "src"].forEach((key) => {
+          const value = node.properties[key];
+          if (typeof value === "string") {
+            node.properties[key] = applyBasePathToRootRelativeUrl(value, basePath);
+          }
+        });
+      }
+
+      if (Array.isArray(node.children)) {
+        node.children.forEach(visit);
+      }
+    };
+
+    visit(tree);
+  };
+}
+
+const normalizedBasePath = normalizeBasePath(BASE_PATH);
+
 export default defineConfig({
+  site: SITE_URL,
+  base: normalizedBasePath,
   output: "static",
   markdown: {
-    rehypePlugins: [addHeadingAnchors]
+    rehypePlugins: [addHeadingAnchors, prefixRootRelativeLinks(normalizedBasePath)]
   }
 });

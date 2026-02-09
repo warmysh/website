@@ -13,14 +13,21 @@ const baseUrl = import.meta.env.BASE_URL;
 function normalizePath(path) {
   if (!path) return "/";
   const prefixed = path.startsWith("/") ? path : `/${path}`;
-  return prefixed.replace(/\/+$/, "/");
+  const collapsed = prefixed.replace(/\/{2,}/g, "/");
+  return collapsed.endsWith("/") ? collapsed : `${collapsed}/`;
+}
+
+function joinWithBase(routePart = "") {
+  const normalizedBase = normalizePath(baseUrl);
+  const normalizedPart = routePart.replace(/^\/+/, "");
+  return normalizePath(`${normalizedBase}${normalizedPart}`);
 }
 
 function markdownHrefToRoute(markdownHref) {
   const normalized = markdownHref.trim().replace(/^\.\/+/, "");
   const pageName = normalized.replace(/\.md$/i, "");
   const routePart = pageName === "index" ? "" : `${pageName}/`;
-  return normalizePath(`${baseUrl}${routePart}`);
+  return joinWithBase(routePart);
 }
 
 function parseNavTree(markdown) {
@@ -114,7 +121,7 @@ function buildTocTree(headings) {
 const parsedNav = parseNavTree(navSource);
 const currentPath = normalizePath(Astro.url.pathname);
 const knownRoutes = collectNavRoutes(parsedNav);
-const notFoundRoute = normalizePath(`${baseUrl}404/`);
+const notFoundRoute = joinWithBase("404/");
 const isKnownRoute = knownRoutes.has(currentPath) || currentPath === notFoundRoute;
 const navItems = markNavState(parsedNav, currentPath);
 const tocItems = buildTocTree(tocHeadings);
