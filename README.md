@@ -69,6 +69,8 @@
 - В `astro.config.mjs` зафиксированы:
   - `site: "https://warmysh.github.io"`
   - `base: "/website"`
+- Временная совместимость по root-путям обеспечивается через `404.html` в корне:
+  `/docs`, `/oem`, `/safety`, `/platform`, `/configurations`, `/roadmap` -> `/website/...`.
 
 ### Правило ссылок
 
