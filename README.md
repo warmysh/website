@@ -63,3 +63,25 @@
 
 ## Структура репозитория (v0)
 
+## Деплой на GitHub Pages (project site)
+
+- Канонический адрес публикации: `https://warmysh.github.io/website/`.
+- В `astro.config.mjs` зафиксированы:
+  - `site: "https://warmysh.github.io"`
+  - `base: "/website"`
+
+### Правило ссылок
+
+- В Astro-шаблонах использовать `import.meta.env.BASE_URL` для внутренних маршрутов.
+- Не добавлять жёсткие ссылки, которые обходят base-path.
+- Для markdown-контента root-relative ссылки автоматически приводятся к base-aware виду на этапе сборки.
+
+### Локальная проверка режима `/website`
+
+```powershell
+npm ci
+npm run build
+npm run preview -- --host 127.0.0.1 --port 4173
+npx linkinator http://127.0.0.1:4173/website/ --recurse --skip "mailto:|tel:"
+```
+
