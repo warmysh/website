@@ -4,6 +4,10 @@ import Content, { getHeadings } from "../../content/oem.md";
 
 const tocHeadings = getHeadings().filter((heading) => heading.depth === 2 || heading.depth === 3);
 ---
-<BaseLayout title="OEM-интеграция" tocHeadings={tocHeadings}>
+<BaseLayout
+  title="OEM-интеграция"
+  description="ZHUZHIMIMA controller для OEM: границы интеграции, инварианты управления нагревом и публичный пакет документации."
+  tocHeadings={tocHeadings}
+>
   <Content />
 </BaseLayout>

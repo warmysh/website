@@ -4,6 +4,10 @@ import Content, { getHeadings } from "../../content/index.md";
 
 const tocHeadings = getHeadings().filter((heading) => heading.depth === 2 || heading.depth === 3);
 ---
-<BaseLayout title="Главная" tocHeadings={tocHeadings}>
+<BaseLayout
+  title="Главная"
+  description="ZHUZHIMIMA Kiln Controller — контроллер муфельной печи с fail-closed логикой и обязательным SELFTEST перед нагревом."
+  tocHeadings={tocHeadings}
+>
   <Content />
 </BaseLayout>
