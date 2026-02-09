@@ -10,7 +10,7 @@
 
 ---
 
-Канонический документ: [Архитектура системы (v1)](/website/docs/system-architecture/).
+Канонический документ: [Архитектура системы](/website/docs/system-architecture/).
 
 ---
 
