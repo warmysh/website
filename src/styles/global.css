@@ -239,12 +239,18 @@ a:focus-visible {
   margin: 1.45em 0;
 }
 
-.markdown-body table {
-  display: block;
+.markdown-body .table-scroll {
+  width: 100%;
+  max-width: 100%;
   overflow-x: auto;
+  margin: 1.05em 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.markdown-body table {
   width: max-content;
   min-width: 100%;
-  margin: 1.05em 0;
+  margin: 0;
   border-collapse: collapse;
   border: 1px solid var(--border);
   border-radius: 8px;

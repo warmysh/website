@@ -95,7 +95,7 @@ function applyBasePathToRootRelativeUrl(url, basePath) {
 }
 
 function prefixRootRelativeLinks(basePath) {
-  return () => (tree) => {
+  return (tree) => {
     const visit = (node) => {
       if (!node || typeof node !== "object") return;
 
@@ -117,6 +117,47 @@ function prefixRootRelativeLinks(basePath) {
   };
 }
 
+function hasClassName(node, className) {
+  if (!node || typeof node !== "object") return false;
+  const raw = node.properties?.className;
+  if (Array.isArray(raw)) return raw.includes(className);
+  if (typeof raw === "string") return raw.split(/\s+/).includes(className);
+  return false;
+}
+
+function wrapTablesForResponsiveOverflow() {
+  return (tree) => {
+    const visit = (node, parent = null, index = -1) => {
+      if (!node || typeof node !== "object") return;
+
+      if (
+        node.type === "element" &&
+        node.tagName === "table" &&
+        parent &&
+        Array.isArray(parent.children) &&
+        index >= 0 &&
+        !(parent.type === "element" && parent.tagName === "div" && hasClassName(parent, "table-scroll"))
+      ) {
+        parent.children[index] = {
+          type: "element",
+          tagName: "div",
+          properties: {
+            className: ["table-scroll"]
+          },
+          children: [node]
+        };
+        return;
+      }
+
+      if (Array.isArray(node.children)) {
+        node.children.forEach((child, childIndex) => visit(child, node, childIndex));
+      }
+    };
+
+    visit(tree);
+  };
+}
+
 const normalizedBasePath = normalizeBasePath(BASE_PATH);
 
 export default defineConfig({
@@ -124,6 +165,10 @@ export default defineConfig({
   base: normalizedBasePath,
   output: "static",
   markdown: {
-    rehypePlugins: [addHeadingAnchors, prefixRootRelativeLinks(normalizedBasePath)]
+    rehypePlugins: [
+      addHeadingAnchors,
+      prefixRootRelativeLinks(normalizedBasePath),
+      wrapTablesForResponsiveOverflow
+    ]
   }
 });
