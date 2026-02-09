@@ -10,7 +10,8 @@
       "Bash(findstr:*)",
       "Bash(git push:*)",
       "Bash(gh workflow:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "WebFetch(domain:warmysh.github.io)"
     ]
   }
 }
