@@ -6,6 +6,7 @@
 - [OEM](./oem.md)
 - [Конфигурации](./configurations.md)
 - [Документация](./docs.md)
+  - [Защита во время обжига](./docs/protection-during-firing.md)
   - [Концепция безопасности (v1)](./docs/safety-concept.md)
   - [Архитектура системы (v1)](./docs/system-architecture.md)
   - [OEM-интеграция (v1)](./docs/oem-integration.md)

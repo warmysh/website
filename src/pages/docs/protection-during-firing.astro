@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Content, { getHeadings } from "../../../content/docs/protection-during-firing.md";
+
+const tocHeadings = getHeadings().filter((heading) => heading.depth === 2 || heading.depth === 3);
+---
+<BaseLayout title="Защита во время обжига" tocHeadings={tocHeadings}>
+  <Content />
+</BaseLayout>
