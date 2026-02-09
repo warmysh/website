@@ -4,7 +4,7 @@
 > Не является юридической гарантией или офертой.
 > Ответственность за применимость в конечном изделии несёт OEM.
 
-## Matrix
+## Матрица
 
 | Failure mode | Detection | Automatic reaction | Recovery action |
 | --- | --- | --- | --- |
@@ -19,14 +19,14 @@
 | SELFTEST failed | Pre-start checks | Heating remains blocked | Remove root cause and pass SELFTEST |
 | Slow/overloaded network client | Service time budget monitor | Client disconnect, control loop priority preserved | Fix network side; heating contour keeps deterministic behavior |
 
-## Common recovery policy
+## Общая политика восстановления
 
-- Safety contour has priority over UI and network.
-- Recovery requires explicit operator action for critical faults.
-- No remote bypass of safety gates is provided.
+- Контур безопасности имеет приоритет над UI и сетью.
+- Для критических отказов восстановление требует явного действия оператора.
+- Удалённый обход safety-гейтов не допускается.
 
-## Related docs
+## Связанные документы
 
-- [Technical specification](/docs/technical-specification/)
-- [SELFTEST scope](/docs/selftest-scope/)
-- [Integration checklist](/docs/integration-checklist/)
+- [Техническая спецификация](/docs/technical-specification/)
+- [Область SELFTEST](/docs/selftest-scope/)
+- [Чеклист интеграции OEM](/docs/integration-checklist/)
