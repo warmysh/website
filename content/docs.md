@@ -6,12 +6,12 @@
 - [Архитектура системы](/website/docs/system-architecture/) — как разделены слои и почему интерфейс/сеть не обходят безопасность.
 - [OEM-интеграция](/website/docs/oem-integration/) — какие инварианты и ограничения действуют при интеграции.
 
-## Публичный OEM integration pack (без секретов)
+## Публичный пакет OEM-документации (без секретов)
 
-- [Technical specification](/website/docs/technical-specification/) — контрактный уровень: интерфейсы, диапазоны и условия интеграции.
-- [SELFTEST scope](/website/docs/selftest-scope/) — какие проверки входят в pre-start gate и что считается pass/fail.
-- [Failure modes](/website/docs/failure-modes/) — матрица типовых отказов и стандартные действия при отказах.
-- [Integration checklist](/website/docs/integration-checklist/) — чек-лист OEM-внедрения и приемочных проверок.
+- [Техническая спецификация](/website/docs/technical-specification/) — контрактный уровень: интерфейсы, диапазоны и условия интеграции.
+- [Область SELFTEST](/website/docs/selftest-scope/) — какие проверки входят в предпусковой барьер и что считается PASS/FAIL.
+- [Отказы и реакции системы](/website/docs/failure-modes/) — матрица типовых отказов и стандартные действия при отказах.
+- [Чеклист интеграции OEM](/website/docs/integration-checklist/) — чек-лист OEM-внедрения и приемочных проверок.
 
 Связанный раздел для OEM: [страница OEM](/website/oem/).
 

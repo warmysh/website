@@ -4,6 +4,6 @@ import Content, { getHeadings } from "../../content/roadmap.md";
 
 const tocHeadings = getHeadings().filter((heading) => heading.depth === 2 || heading.depth === 3);
 ---
-<BaseLayout title="Roadmap" tocHeadings={tocHeadings}>
+<BaseLayout title="Направления развития (Roadmap)" tocHeadings={tocHeadings}>
   <Content />
 </BaseLayout>

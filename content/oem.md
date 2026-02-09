@@ -58,10 +58,10 @@
 
 Для OEM-команды опубликован отдельный комплект документов:
 
-- [Technical specification](/website/docs/technical-specification/)
-- [SELFTEST scope](/website/docs/selftest-scope/)
-- [Failure modes](/website/docs/failure-modes/)
-- [Integration checklist](/website/docs/integration-checklist/)
+- [Техническая спецификация](/website/docs/technical-specification/)
+- [Область SELFTEST](/website/docs/selftest-scope/)
+- [Отказы и реакции системы](/website/docs/failure-modes/)
+- [Чеклист интеграции OEM](/website/docs/integration-checklist/)
 
 Весь пакет доступен также через [раздел документации](/website/docs/).
 
