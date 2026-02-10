@@ -2,9 +2,7 @@
 
 - [Главная](./index.md)
 - [Безопасность](./safety.md)
-- [Платформа и архитектура](./platform.md)
 - [OEM](./oem.md)
-- [Конфигурации](./configurations.md)
 - [Документация](./docs.md)
   - [Защита во время обжига](./docs/protection-during-firing.md)
   - [Концепция безопасности](./docs/safety-concept.md)

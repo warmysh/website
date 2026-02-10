@@ -4,6 +4,6 @@ import Content, { getHeadings } from "../../content/docs.md";
 
 const tocHeadings = getHeadings().filter((heading) => heading.depth === 2 || heading.depth === 3);
 ---
-<BaseLayout title="Документация" tocHeadings={tocHeadings}>
+<BaseLayout title="Документация (Docs v0.1)" tocHeadings={tocHeadings}>
   <Content />
 </BaseLayout>
