@@ -4,7 +4,7 @@ import NavTree from "../components/NavTree.astro";
 import TocTree from "../components/TocTree.astro";
 import "../styles/global.css";
 
-const { title = "ZHUZHIMIMA", description = "", tocHeadings = [] } = Astro.props;
+const { title = "PROFORGE", description = "", tocHeadings = [] } = Astro.props;
 const navFile = new URL("../../content/_nav.md", import.meta.url);
 const navSource = fs.readFileSync(navFile, "utf-8");
 const baseUrl = import.meta.env.BASE_URL;
@@ -125,7 +125,7 @@ const isKnownRoute = knownRoutes.has(currentPath) || currentPath === notFoundRou
 const navItems = markNavState(parsedNav, currentPath);
 const tocItems = buildTocTree(tocHeadings);
 const hasToc = tocItems.length > 0;
-const pageTitle = title === "ZHUZHIMIMA" ? title : `${title} — ZHUZHIMIMA`;
+const pageTitle = title === "PROFORGE" ? title : `${title} — PROFORGE`;
 ---
 <!doctype html>
 <html lang="ru">
@@ -138,7 +138,7 @@ const pageTitle = title === "ZHUZHIMIMA" ? title : `${title} — ZHUZHIMIMA`;
   <body>
     <header class="site-header">
       <div class="shell shell--header">
-        <a class="brand" href={normalizePath(baseUrl)}>ZHUZHIMIMA</a>
+        <a class="brand" href={normalizePath(baseUrl)}>PROFORGE</a>
       </div>
     </header>
 
@@ -189,7 +189,7 @@ const pageTitle = title === "ZHUZHIMIMA" ? title : `${title} — ZHUZHIMIMA`;
     </div>
 
     <footer class="site-footer">
-      <div class="shell shell--footer">ZHUZHIMIMA · Docs v0.1</div>
+      <div class="shell shell--footer">PROFORGE · Docs v0.1</div>
     </footer>
   </body>
 </html>
