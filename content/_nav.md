@@ -2,6 +2,8 @@
 
 - [Главная](./index.md)
 - [Безопасность](./safety.md)
+- [Платформа](./platform.md)
+- [Конфигурации](./configurations.md)
 - [OEM](./oem.md)
 - [Документация](./docs.md)
   - [Защита во время обжига](./docs/protection-during-firing.md)
