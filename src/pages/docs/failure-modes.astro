@@ -4,6 +4,10 @@ import Content, { getHeadings } from "../../../content/docs/failure-modes.md";
 
 const tocHeadings = getHeadings().filter((heading) => heading.depth === 2 || heading.depth === 3);
 ---
-<BaseLayout title="Отказы и реакции системы" tocHeadings={tocHeadings}>
+<BaseLayout
+  title="Отказы и реакции системы"
+  description="Отказы и реакции контроллера муфельной печи PROFORGE: поведение при сбоях датчиков, силовой части и питания, блокировка нагрева и возврат в безопасное состояние."
+  tocHeadings={tocHeadings}
+>
   <Content />
 </BaseLayout>

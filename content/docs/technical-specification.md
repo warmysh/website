@@ -57,7 +57,7 @@
 
 ## Связанные документы
 
-- [Область SELFTEST](/website/docs/selftest-scope/)
-- [Отказы и реакции системы](/website/docs/failure-modes/)
-- [Чеклист интеграции OEM](/website/docs/integration-checklist/)
-- [Страница OEM](/website/oem/)
+- [Область SELFTEST](/docs/selftest-scope/)
+- [Отказы и реакции системы](/docs/failure-modes/)
+- [Чеклист интеграции OEM](/docs/integration-checklist/)
+- [Страница OEM](/oem/)

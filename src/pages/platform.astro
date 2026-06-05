@@ -4,6 +4,17 @@ import Content, { getHeadings } from "../../content/platform.md";
 
 const tocHeadings = getHeadings().filter((heading) => heading.depth === 2 || heading.depth === 3);
 ---
-<BaseLayout title="Платформа и архитектура" tocHeadings={tocHeadings}>
+<BaseLayout
+  title="Платформа и архитектура контроллера печи"
+  description="Архитектура контроллера PROFORGE: слоистая система с жёстким разделением интерфейсов, логики управления нагревом и силовой части для предсказуемого и отказоустойчивого управления электропечью."
+  keywords={[
+    "архитектура контроллера печи",
+    "система управления электропечью",
+    "контроллер муфельной печи",
+    "отказоустойчивый контроллер нагрева",
+    "силовая часть контроллера печи"
+  ]}
+  tocHeadings={tocHeadings}
+>
   <Content />
 </BaseLayout>

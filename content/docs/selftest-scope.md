@@ -67,6 +67,6 @@ FAIL означает блокировку запуска нагрева до у
 
 ## Связанные документы
 
-- [Техническая спецификация](/website/docs/technical-specification/)
-- [Отказы и реакции системы](/website/docs/failure-modes/)
-- [Концепция безопасности](/website/docs/safety-concept/)
+- [Техническая спецификация](/docs/technical-specification/)
+- [Отказы и реакции системы](/docs/failure-modes/)
+- [Концепция безопасности](/docs/safety-concept/)

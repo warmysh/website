@@ -4,6 +4,10 @@ import Content, { getHeadings } from "../../../content/docs/protection-during-fi
 
 const tocHeadings = getHeadings().filter((heading) => heading.depth === 2 || heading.depth === 3);
 ---
-<BaseLayout title="Защита во время обжига" tocHeadings={tocHeadings}>
+<BaseLayout
+  title="Защита во время обжига"
+  description="Защитная логика контроллера муфельной печи PROFORGE во время обжига: контроль показаний, отключение нагрева при неопределённости и карта связанных технических документов."
+  tocHeadings={tocHeadings}
+>
   <Content />
 </BaseLayout>

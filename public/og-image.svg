@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0e141b"/>
+      <stop offset="1" stop-color="#0a0f14"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.85" cy="0.1" r="0.7">
+      <stop offset="0" stop-color="#f5aa2f" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#f5aa2f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <g transform="translate(96 150)">
+    <path d="M70 0c4 16-6 22-12 30-6 8-10 16-6 26 2 6 6 10 12 12-4-6-2-12 2-16 2 8 8 10 12 16 6 8 4 18-2 24 14-4 24-16 24-32 0-14-8-22-14-30-2 6-6 8-10 8 4-14-2-28-26-38z" fill="#f5aa2f"/>
+  </g>
+  <text x="240" y="250" font-family="'Segoe UI', sans-serif" font-size="92" font-weight="700" fill="#e7edf3" letter-spacing="4">PROFORGE</text>
+  <text x="240" y="320" font-family="'Segoe UI', sans-serif" font-size="40" font-weight="500" fill="#f5aa2f">Kiln Controller</text>
+  <text x="96" y="470" font-family="'Segoe UI', sans-serif" font-size="38" font-weight="400" fill="#b9c4d0">Контроллер муфельной печи для OEM-производителей</text>
+  <text x="96" y="525" font-family="'Segoe UI', sans-serif" font-size="38" font-weight="400" fill="#b9c4d0">электропечей · fail-closed защита нагрева · SELFTEST</text>
+</svg>

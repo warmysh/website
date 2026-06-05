@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Content, { getHeadings } from "../../content/contacts.md";
+
+const tocHeadings = getHeadings().filter((heading) => heading.depth === 2 || heading.depth === 3);
+---
+<BaseLayout
+  title="Контакты"
+  description="Контакты команды PROFORGE: email, GitHub и облачный сервис. Вопросы по контроллеру муфельной печи, OEM-интеграции и облачному мониторингу."
+  keywords={[
+    "PROFORGE контакты",
+    "контроллер печи купить",
+    "OEM контроллер печи связь",
+    "контроллер муфельной печи производитель"
+  ]}
+  tocHeadings={tocHeadings}
+>
+  <Content />
+</BaseLayout>

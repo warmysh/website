@@ -4,6 +4,17 @@ import Content, { getHeadings } from "../../content/configurations.md";
 
 const tocHeadings = getHeadings().filter((heading) => heading.depth === 2 || heading.depth === 3);
 ---
-<BaseLayout title="Конфигурации" tocHeadings={tocHeadings}>
+<BaseLayout
+  title="Конфигурации контроллера печи"
+  description="Конфигурации контроллера PROFORGE по числу зон нагрева: однозонный контроллер для серийного применения и многозонные версии в разработке. Архитектурные варианты и параметры интеграции."
+  keywords={[
+    "конфигурации контроллера печи",
+    "однозонный контроллер печи",
+    "многозонный контроллер обжига",
+    "контроллер муфельной печи",
+    "зоны нагрева электропечи"
+  ]}
+  tocHeadings={tocHeadings}
+>
   <Content />
 </BaseLayout>

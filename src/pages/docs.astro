@@ -4,6 +4,17 @@ import Content, { getHeadings } from "../../content/docs.md";
 
 const tocHeadings = getHeadings().filter((heading) => heading.depth === 2 || heading.depth === 3);
 ---
-<BaseLayout title="Документация (Docs v0.1)" tocHeadings={tocHeadings}>
+<BaseLayout
+  title="Документация контроллера печи"
+  description="Техническая документация контроллера муфельной печи PROFORGE: защита во время обжига, концепция безопасности, архитектура системы, OEM-интеграция, спецификация, SELFTEST и реакции на отказы."
+  keywords={[
+    "документация контроллера печи",
+    "техническая спецификация контроллера обжига",
+    "контроллер муфельной печи документация",
+    "OEM-интеграция контроллера печи",
+    "SELFTEST контроллер печи"
+  ]}
+  tocHeadings={tocHeadings}
+>
   <Content />
 </BaseLayout>

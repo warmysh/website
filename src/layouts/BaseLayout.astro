@@ -4,7 +4,37 @@ import NavTree from "../components/NavTree.astro";
 import TocTree from "../components/TocTree.astro";
 import "../styles/global.css";
 
-const { title = "PROFORGE", description = "", tocHeadings = [] } = Astro.props;
+const DEFAULT_DESCRIPTION =
+  "PROFORGE Kiln Controller — промышленный контроллер муфельной печи для OEM-производителей электропечей: fail-closed защита нагрева, обязательный SELFTEST, ПИД-регулирование, программы обжига и облачный мониторинг.";
+const DEFAULT_KEYWORDS = [
+  "контроллер для печей",
+  "контроллер муфельной печи",
+  "контроллер обжига",
+  "терморегулятор печи",
+  "ПИД-регулятор печи",
+  "автоматика для электропечей",
+  "контроллер электропечи",
+  "система управления печью",
+  "контроллер обжига керамики",
+  "OEM контроллер печи",
+  "PROFORGE"
+];
+
+const {
+  title = "PROFORGE",
+  description = "",
+  keywords = [],
+  noindex = false,
+  tocHeadings = []
+} = Astro.props;
+
+const robotsContent = noindex ? "noindex, follow" : "index, follow, max-image-preview:large";
+
+const metaDescription = description || DEFAULT_DESCRIPTION;
+const metaKeywords = (keywords.length > 0 ? keywords : DEFAULT_KEYWORDS).join(", ");
+const siteOrigin = Astro.site ? Astro.site.origin : "https://oem.proforge.ru";
+const canonicalUrl = new URL(Astro.url.pathname, siteOrigin).href;
+const ogImageUrl = new URL("/og-image.svg", siteOrigin).href;
 const navFile = new URL("../../content/_nav.md", import.meta.url);
 const navSource = fs.readFileSync(navFile, "utf-8");
 const baseUrl = import.meta.env.BASE_URL;
@@ -125,20 +155,87 @@ const isKnownRoute = knownRoutes.has(currentPath) || currentPath === notFoundRou
 const navItems = markNavState(parsedNav, currentPath);
 const tocItems = buildTocTree(tocHeadings);
 const hasToc = tocItems.length > 0;
-const pageTitle = title === "PROFORGE" ? title : `${title} — PROFORGE`;
+const pageTitle =
+  title === "PROFORGE" || /PROFORGE/i.test(title) ? title : `${title} — PROFORGE`;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteOrigin}/#organization`,
+      name: "PROFORGE",
+      url: `${siteOrigin}/`,
+      logo: ogImageUrl,
+      description:
+        "Разработчик контроллеров муфельных печей для OEM-производителей электропечей: fail-closed защита нагрева, ПИД-регулирование, программы обжига и облачный мониторинг.",
+      sameAs: ["https://github.com/warmysh"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteOrigin}/#website`,
+      url: `${siteOrigin}/`,
+      name: "PROFORGE Kiln Controller",
+      inLanguage: "ru-RU",
+      description: DEFAULT_DESCRIPTION,
+      publisher: { "@id": `${siteOrigin}/#organization` }
+    }
+  ]
+};
 ---
 <!doctype html>
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    {description ? <meta name="description" content={description} /> : null}
     <title>{pageTitle}</title>
+    <meta name="description" content={metaDescription} />
+    <meta name="keywords" content={metaKeywords} />
+    <meta name="robots" content={robotsContent} />
+    <meta name="author" content="PROFORGE" />
+    <meta name="theme-color" content="#0b0f14" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="PROFORGE" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={metaDescription} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" type="application/xml" href="/sitemap.xml" title="Sitemap" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
   <body>
     <header class="site-header">
       <div class="shell shell--header">
         <a class="brand" href={normalizePath(baseUrl)}>PROFORGE</a>
+        <div class="header-actions">
+          <a
+            class="header-btn header-btn--ghost"
+            href={`${normalizePath(baseUrl)}files/OEM_Proforge_Kiln_Controller.pptx`}
+            title="Скачать презентацию для OEM (PPTX)"
+            aria-label="Скачать презентацию для OEM"
+            download
+          >Презентация</a>
+          <a
+            class="header-btn cloud-link"
+            href="https://app.proforge.ru/login"
+            rel="noopener"
+            title="Вход для владельцев печей"
+            aria-label="Proforge Kiln Cloud — вход для владельцев печей"
+          >Proforge Kiln Cloud</a>
+        </div>
       </div>
     </header>
 

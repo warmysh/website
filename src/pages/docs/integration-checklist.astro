@@ -4,6 +4,10 @@ import Content, { getHeadings } from "../../../content/docs/integration-checklis
 
 const tocHeadings = getHeadings().filter((heading) => heading.depth === 2 || heading.depth === 3);
 ---
-<BaseLayout title="Чеклист интеграции OEM" tocHeadings={tocHeadings}>
+<BaseLayout
+  title="Чеклист интеграции OEM"
+  description="Чеклист OEM-интеграции контроллера муфельной печи PROFORGE: шаги и проверки для производителей электропечей при внедрении контроллера в изделие."
+  tocHeadings={tocHeadings}
+>
   <Content />
 </BaseLayout>

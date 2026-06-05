@@ -4,6 +4,10 @@ import Content, { getHeadings } from "../../../content/docs/safety-concept.md";
 
 const tocHeadings = getHeadings().filter((heading) => heading.depth === 2 || heading.depth === 3);
 ---
-<BaseLayout title="Концепция безопасности" tocHeadings={tocHeadings}>
+<BaseLayout
+  title="Концепция безопасности"
+  description="Концепция безопасности контроллера муфельной печи PROFORGE: принцип fail-closed, безопасное состояние силовой части и условия блокировки нагрева."
+  tocHeadings={tocHeadings}
+>
   <Content />
 </BaseLayout>

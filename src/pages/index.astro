@@ -5,8 +5,20 @@ import Content, { getHeadings } from "../../content/index.md";
 const tocHeadings = getHeadings().filter((heading) => heading.depth === 2 || heading.depth === 3);
 ---
 <BaseLayout
-  title="Главная"
-  description="PROFORGE Kiln Controller — контроллер муфельной печи с fail-closed логикой и обязательным SELFTEST перед нагревом."
+  title="Контроллер муфельной печи для OEM"
+  description="PROFORGE Kiln Controller — промышленный контроллер муфельной печи для OEM-производителей электропечей: fail-closed логика, обязательный SELFTEST перед нагревом, ПИД-регулирование, 13+ программ обжига, OTA и облачный мониторинг."
+  keywords={[
+    "контроллер для печей",
+    "контроллер муфельной печи",
+    "контроллер обжига",
+    "терморегулятор печи обжига",
+    "ПИД-регулятор печи",
+    "автоматика для электропечей",
+    "контроллер электропечи",
+    "система управления печью обжига",
+    "контроллер обжига керамики",
+    "OEM контроллер печи"
+  ]}
   tocHeadings={tocHeadings}
 >
   <Content />

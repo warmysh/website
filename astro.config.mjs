@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
 
-const SITE_URL = "https://warmysh.github.io";
-const BASE_PATH = "/website";
+const SITE_URL = "https://oem.proforge.ru";
+const BASE_PATH = "/";
 
 function hasHeadingAnchor(node) {
   if (!Array.isArray(node.children)) return false;

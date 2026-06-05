@@ -11,7 +11,24 @@
       "Bash(git push:*)",
       "Bash(gh workflow:*)",
       "Bash(curl:*)",
-      "WebFetch(domain:warmysh.github.io)"
+      "WebFetch(domain:warmysh.github.io)",
+      "Bash(ls \"D:\\\\MDDOCS\\\\SmartHome\\\\PlatformIO\\\\kontroller_ZHYZHIM\")",
+      "Read(//d/MDDOCS/SmartHome/PlatformIO/kontroller_ZHYZHIM/**)",
+      "PowerShell(npm run build 2>&1)",
+      "PowerShell($cmd = Get-Command node -ErrorAction SilentlyContinue; if \\($cmd\\) { $cmd.Source } else { \"node not found\" }; Get-ChildItem \"$env:ProgramFiles\\\\nodejs\\\\npm.cmd\" -ErrorAction SilentlyContinue | Select-Object FullName; Get-ChildItem \"$env:APPDATA\\\\npm\\\\npm.cmd\" -ErrorAction SilentlyContinue | Select-Object FullName)",
+      "PowerShell($paths = @\\(\"$env:ProgramFiles\\\\nodejs\",\"$env:LOCALAPPDATA\\\\Programs\\\\nodejs\",\"$env:LOCALAPPDATA\\\\fnm_multishells\",\"$env:APPDATA\\\\nvm\",\"C:\\\\nvm4w\\\\nodejs\"\\); foreach \\($p in $paths\\) { if \\(Test-Path $p\\) { Get-ChildItem -Path $p -Recurse -Filter \"node.exe\" -ErrorAction SilentlyContinue | Select-Object -First 3 -ExpandProperty FullName } }; Write-Output \"---fnm/volta---\"; Get-Command fnm,volta -ErrorAction SilentlyContinue | Select-Object Name,Source)",
+      "PowerShell(Write-Output \"=== where.exe node ===\"; where.exe node 2>$null; Write-Output \"=== .bin ===\"; Test-Path \".\\\\node_modules\\\\.bin\\\\astro\"; Write-Output \"=== dist exists ===\"; Test-Path \".\\\\dist\\\\index.html\"; Write-Output \"=== PATH node hits ===\"; \\($env:PATH -split ';'\\) | Where-Object { $_ -match 'node' })",
+      "PowerShell($drives = @\\(\"C\",\"D\"\\); foreach \\($d in $drives\\) { Get-ChildItem -Path \"${d}:\\\\\" -Filter \"node.exe\" -Recurse -Depth 4 -ErrorAction SilentlyContinue -Force | Select-Object -First 1 -ExpandProperty FullName })",
+      "PowerShell(& \"C:\\\\Program Files\\\\Adobe\\\\Adobe Creative Cloud Experience\\\\libs\\\\node.exe\" --version)",
+      "PowerShell($env:PATH = \"C:\\\\Program Files\\\\Adobe\\\\Adobe Creative Cloud Experience\\\\libs;\" + $env:PATH; & \"C:\\\\Program Files\\\\Adobe\\\\Adobe Creative Cloud Experience\\\\libs\\\\node.exe\" \".\\\\node_modules\\\\astro\\\\astro.js\" build 2>&1 | Select-Object -Last 40)",
+      "PowerShell(& \"C:\\\\Program Files\\\\Adobe\\\\Adobe Creative Cloud Experience\\\\libs\\\\node.exe\" \".\\\\node_modules\\\\astro\\\\astro.js\" build 2>&1)",
+      "Bash(\"/c/Program Files/Adobe/Adobe Creative Cloud Experience/libs/node.exe\" \"./node_modules/astro/astro.js\" build)",
+      "Bash(mkdir -p public/files && cp \"/d/MDDOCS/SmartHome/PlatformIO/kontroller_ZHYZHIM/Презентация/OEM_Proforge_Kiln_Controller.pptx\" \"public/files/OEM_Proforge_Kiln_Controller.pptx\" && ls -la public/files/)",
+      "PowerShell(Add-Type -AssemblyName System.IO.Compression.FileSystem; $z = [System.IO.Compression.ZipFile]::OpenRead\\(\"d:\\\\MDDOCS\\\\SmartHome\\\\PlatformIO\\\\website\\\\site.zip\"\\); $z.Entries | Select-Object -First 12 -ExpandProperty FullName; Write-Output \"...\"; Write-Output \\(\"Всего записей: \" + $z.Entries.Count\\); $z.Dispose\\(\\))",
+      "PowerShell(Add-Type -AssemblyName System.IO.Compression.FileSystem; $z = [System.IO.Compression.ZipFile]::OpenRead\\(\"d:\\\\MDDOCS\\\\SmartHome\\\\PlatformIO\\\\website\\\\site.zip\"\\); $z.Entries | Select-Object -ExpandProperty FullName | Select-Object -First 8; Write-Output \\(\"Всего: \" + $z.Entries.Count\\); $hasIndex = \\($z.Entries | Where-Object { $_.FullName -eq 'index.html' }\\).Count; Write-Output \\(\"index.html в корне: \" + $hasIndex\\); $z.Dispose\\(\\))"
+    ],
+    "additionalDirectories": [
+      "D:\\MDDOCS\\SmartHome\\PlatformIO\\kontroller_ZHYZHIM\\Презентация"
     ]
   }
 }

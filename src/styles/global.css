@@ -90,6 +90,65 @@ a:focus-visible {
   text-decoration: none;
 }
 
+.header-actions {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.header-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.42em 0.95em;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 620;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.header-btn--ghost {
+  border: 1px solid var(--border);
+  color: var(--text-soft);
+  background: transparent;
+}
+
+.header-btn--ghost:hover,
+.header-btn--ghost:focus-visible {
+  border-color: var(--accent);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.cloud-link {
+  border: 1px solid var(--accent);
+  color: #0a0f14;
+  background: var(--accent);
+}
+
+.cloud-link:hover,
+.cloud-link:focus-visible {
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+  color: #0a0f14;
+  text-decoration: none;
+}
+
+@media (max-width: 640px) {
+  .header-actions {
+    gap: 0.35em;
+  }
+
+  .header-btn {
+    font-size: 0.74rem;
+    padding: 0.4em 0.6em;
+  }
+}
+
 .shell--layout {
   display: grid;
   grid-template-columns: var(--nav-width) minmax(0, 1fr) var(--toc-width);

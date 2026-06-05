@@ -4,6 +4,10 @@ import Content, { getHeadings } from "../../../content/docs/oem-integration.md";
 
 const tocHeadings = getHeadings().filter((heading) => heading.depth === 2 || heading.depth === 3);
 ---
-<BaseLayout title="OEM-интеграция" tocHeadings={tocHeadings}>
+<BaseLayout
+  title="OEM-интеграция (документация)"
+  description="Документация по OEM-интеграции контроллера муфельной печи PROFORGE: реализованные возможности, адресуемые задачи управления нагревом и ограничения при интеграции."
+  tocHeadings={tocHeadings}
+>
   <Content />
 </BaseLayout>

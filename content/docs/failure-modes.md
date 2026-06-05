@@ -37,6 +37,6 @@
 
 ## Связанные документы
 
-- [Техническая спецификация](/website/docs/technical-specification/)
-- [Область SELFTEST](/website/docs/selftest-scope/)
-- [Чеклист интеграции OEM](/website/docs/integration-checklist/)
+- [Техническая спецификация](/docs/technical-specification/)
+- [Область SELFTEST](/docs/selftest-scope/)
+- [Чеклист интеграции OEM](/docs/integration-checklist/)

@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Content, { getHeadings } from "../../../content/docs/cloud-monitoring.md";
+
+const tocHeadings = getHeadings().filter((heading) => heading.depth === 2 || heading.depth === 3);
+---
+<BaseLayout
+  title="Облачный мониторинг"
+  description="Облачный мониторинг контроллера печи PROFORGE: телеметрия, история обжигов и уведомления в режиме только чтение — без удалённого управления нагревом."
+  tocHeadings={tocHeadings}
+>
+  <Content />
+</BaseLayout>

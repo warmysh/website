@@ -4,6 +4,18 @@ import Content, { getHeadings } from "../../content/safety.md";
 
 const tocHeadings = getHeadings().filter((heading) => heading.depth === 2 || heading.depth === 3);
 ---
-<BaseLayout title="Безопасность" tocHeadings={tocHeadings}>
+<BaseLayout
+  title="Безопасность контроллера печи (fail-closed)"
+  description="Механизмы безопасности контроллера печи PROFORGE: принцип fail-closed, двойное размыкание силовой цепи (SSR и контактор), измерение тока нагревателя, обязательный SELFTEST и watchdog."
+  keywords={[
+    "безопасность контроллера печи",
+    "fail-closed контроллер нагрева",
+    "защита электропечи",
+    "контроллер обжига безопасность",
+    "watchdog контроллер печи",
+    "защита от перегрева печи"
+  ]}
+  tocHeadings={tocHeadings}
+>
   <Content />
 </BaseLayout>
