@@ -5,8 +5,8 @@ import Content, { getHeadings } from "../../../content/docs/cloud-monitoring.md"
 const tocHeadings = getHeadings().filter((heading) => heading.depth === 2 || heading.depth === 3);
 ---
 <BaseLayout
-  title="Облачный мониторинг"
-  description="Облачный мониторинг контроллера печи PROFORGE: телеметрия, история обжигов и уведомления в режиме только чтение — без удалённого управления нагревом."
+  title="Мониторинг печи обжига со смартфона — облако PROFORGE"
+  description="Печь на экране телефона: температура и график обжига в реальном времени, история с расходом кВт·ч, уведомления email и push о завершении и авариях. Только наблюдение — управление нагревом через облако невозможно."
   tocHeadings={tocHeadings}
 >
   <Content />

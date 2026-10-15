@@ -14,13 +14,14 @@ function parseRoutes(markdown) {
   markdown.split(/\r?\n/).forEach((line) => {
     const match = line.match(/^\s*-\s+\[[^\]]+\]\(([^)]+)\)\s*$/);
     if (!match) return;
+    if (/^https?:\/\//i.test(match[1].trim())) return;
     routes.add(markdownHrefToPath(match[1]));
   });
   return [...routes];
 }
 
 export async function GET({ site }) {
-  const origin = (site ? site.origin : "https://oem.proforge.ru").replace(/\/$/, "");
+  const origin = (site ? site.origin : "https://proforge.ru").replace(/\/$/, "");
   const navSource = fs.readFileSync(navFile, "utf-8");
   const routes = parseRoutes(navSource);
 

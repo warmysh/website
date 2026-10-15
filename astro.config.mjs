@@ -1,6 +1,6 @@
 import { defineConfig } from "astro/config";
 
-const SITE_URL = "https://oem.proforge.ru";
+const SITE_URL = "https://proforge.ru";
 const BASE_PATH = "/";
 
 function hasHeadingAnchor(node) {

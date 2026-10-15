@@ -5,7 +5,7 @@ import TocTree from "../components/TocTree.astro";
 import "../styles/global.css";
 
 const DEFAULT_DESCRIPTION =
-  "PROFORGE Kiln Controller — промышленный контроллер муфельной печи для OEM-производителей электропечей: fail-closed защита нагрева, обязательный SELFTEST, ПИД-регулирование, программы обжига и облачный мониторинг.";
+  "PROFORGE Kiln Controller — программируемый контроллер (терморегулятор) для муфельных печей обжига: fail-closed защита нагрева, обязательный SELFTEST, ПИД-регулирование, программы обжига и облачный мониторинг.";
 const DEFAULT_KEYWORDS = [
   "контроллер для печей",
   "контроллер муфельной печи",
@@ -32,7 +32,7 @@ const robotsContent = noindex ? "noindex, follow" : "index, follow, max-image-pr
 
 const metaDescription = description || DEFAULT_DESCRIPTION;
 const metaKeywords = (keywords.length > 0 ? keywords : DEFAULT_KEYWORDS).join(", ");
-const siteOrigin = Astro.site ? Astro.site.origin : "https://oem.proforge.ru";
+const siteOrigin = Astro.site ? Astro.site.origin : "https://proforge.ru";
 const canonicalUrl = new URL(Astro.url.pathname, siteOrigin).href;
 const ogImageUrl = new URL("/og-image.svg", siteOrigin).href;
 const navFile = new URL("../../content/_nav.md", import.meta.url);
@@ -53,7 +53,9 @@ function joinWithBase(routePart = "") {
 }
 
 function markdownHrefToRoute(markdownHref) {
-  const normalized = markdownHref.trim().replace(/^\.\/+/, "");
+  const trimmed = markdownHref.trim();
+  if (/^https?:\/\//i.test(trimmed)) return trimmed;
+  const normalized = trimmed.replace(/^\.\/+/, "");
   const pageName = normalized.replace(/\.md$/i, "");
   const routePart = pageName === "index" ? "" : `${pageName}/`;
   return joinWithBase(routePart);
@@ -168,8 +170,7 @@ const structuredData = {
       url: `${siteOrigin}/`,
       logo: ogImageUrl,
       description:
-        "Разработчик контроллеров муфельных печей для OEM-производителей электропечей: fail-closed защита нагрева, ПИД-регулирование, программы обжига и облачный мониторинг.",
-      sameAs: ["https://github.com/warmysh"]
+        "Разработчик контроллеров для муфельных печей обжига: fail-closed защита нагрева, ПИД-регулирование, программы обжига и облачный мониторинг."
     },
     {
       "@type": "WebSite",
@@ -193,7 +194,7 @@ const structuredData = {
     <meta name="keywords" content={metaKeywords} />
     <meta name="robots" content={robotsContent} />
     <meta name="author" content="PROFORGE" />
-    <meta name="theme-color" content="#0b0f14" />
+    <meta name="theme-color" content="#f4f3f0" />
     <link rel="canonical" href={canonicalUrl} />
 
     <!-- Open Graph -->
@@ -219,8 +220,18 @@ const structuredData = {
   <body>
     <header class="site-header">
       <div class="shell shell--header">
-        <a class="brand" href={normalizePath(baseUrl)}>PROFORGE</a>
+        <a class="brand" href={normalizePath(baseUrl)} aria-label="PROFORGE — на главную">
+          <img class="brand-mark" src={`${normalizePath(baseUrl)}logo.svg`} alt="" width="28" height="28" />
+          <span class="brand-name">Proforge</span>
+          <span class="brand-tag" title="Для производителей печей">OEM</span>
+        </a>
         <div class="header-actions">
+          <a
+            class="header-btn header-btn--ghost"
+            href="https://proforge.ru/"
+            title="Сайт для мастеров — proforge.ru"
+            aria-label="Перейти на основной сайт proforge.ru"
+          >proforge.ru</a>
           <a
             class="header-btn header-btn--ghost"
             href={`${normalizePath(baseUrl)}files/OEM_Proforge_Kiln_Controller.pptx`}
@@ -230,7 +241,7 @@ const structuredData = {
           >Презентация</a>
           <a
             class="header-btn cloud-link"
-            href="https://app.proforge.ru/login"
+            href="https://app.proforge.ru/"
             rel="noopener"
             title="Вход для владельцев печей"
             aria-label="Proforge Kiln Cloud — вход для владельцев печей"
@@ -286,7 +297,16 @@ const structuredData = {
     </div>
 
     <footer class="site-footer">
-      <div class="shell shell--footer">PROFORGE · Docs v0.1</div>
+      <div class="shell shell--footer">
+        <div class="footer-brand">
+          <span class="footer-name">Proforge</span>
+          <span class="footer-tagline">Контроллер обжига для производителей печей</span>
+        </div>
+        <nav class="footer-links" aria-label="Связанные сайты">
+          <a href="https://proforge.ru">Сайт для мастеров — proforge.ru</a>
+          <a href="https://app.proforge.ru/" rel="noopener">Proforge Kiln Cloud</a>
+        </nav>
+      </div>
     </footer>
   </body>
 </html>

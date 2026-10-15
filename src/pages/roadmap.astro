@@ -5,13 +5,12 @@ import Content, { getHeadings } from "../../content/roadmap.md";
 const tocHeadings = getHeadings().filter((heading) => heading.depth === 2 || heading.depth === 3);
 ---
 <BaseLayout
-  title="Направления развития (Roadmap)"
-  description="Состояние реализации и направления развития платформы контроллера печи PROFORGE. Изменения публикуются только после фактической реализации; это не план поставки и не анонс сроков."
+  title="Статус платформы и развитие"
+  description="Статус платформы PROFORGE: реализованные функции серийной прошивки и направления развития. Функции публикуются только после фактической реализации."
   keywords={[
     "roadmap контроллер печи",
     "развитие контроллера обжига",
-    "контроллер муфельной печи PROFORGE",
-    "многозонный контроллер печи"
+    "контроллер муфельной печи PROFORGE"
   ]}
   tocHeadings={tocHeadings}
 >

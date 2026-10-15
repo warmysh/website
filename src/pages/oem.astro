@@ -1,21 +1,18 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Content, { getHeadings } from "../../content/oem.md";
-
-const tocHeadings = getHeadings().filter((heading) => heading.depth === 2 || heading.depth === 3);
+// Раздел для производителей печей живёт на отдельном сайте.
+// Эта страница сохраняет старый адрес /oem/ и перенаправляет на него.
+const target = "https://oem.proforge.ru/";
 ---
-<BaseLayout
-  title="OEM-интеграция контроллера печи"
-  description="Контроллер печи PROFORGE для OEM-производителей электропечей: границы интеграции, инварианты управления нагревом, публичный пакет документации и презентация для скачивания."
-  keywords={[
-    "OEM контроллер печи",
-    "контроллер для производителей печей",
-    "автоматика для электропечей OEM",
-    "интеграция контроллера обжига",
-    "контроллер муфельной печи OEM",
-    "система управления печью для производителя"
-  ]}
-  tocHeadings={tocHeadings}
->
-  <Content />
-</BaseLayout>
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>OEM — PROFORGE</title>
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={target} />
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <p>Раздел для производителей печей переехал: <a href={target}>oem.proforge.ru</a></p>
+  </body>
+</html>
